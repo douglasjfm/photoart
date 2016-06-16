@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="app.css">
+<script src="arts.js"></script>
+<script type="text/javascript">
+function insereImagens(array)
+{
+	var imgs = [];
+	var i = 0;
+	tabela = document.getElementById("tabela_imagens");
+	for (i=0;i<array.length;i++)
+	{
+		var imgel = document.createElement("IMG");
+		imgel.setAttribute("src",array[i].contentUrl);
+		imgel.setAttribute("class","imagens_show");
+		imgs[i] = imgel;
+		tabela.appendChild(imgel);
+	}
+}
+</script>
+</head>
+<body>
+<div style="text-align: center; margin-top: 10%;">
+<h1>PhotoArt</h1>
+<input type="text" id="query" style="width: 50%;"/>
+<input type="button" value="Pesquisar" onclick="pesquisa()"/>
+</div>
+<table id="tabela_imagens"></table>
+</body>
+</html>
