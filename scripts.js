@@ -1,18 +1,10 @@
-function pesquisa1()
-{
-	query = document.getElementById("query").value;
-	$("#tabela_imagens").load("server.php?q="+query,function (resp,status,xhr){
-			return;
-	});
-}
-
-function pesquisa(){
+function pesquisa(offset){
 	query = document.getElementById("query").value;
         var params = {
             // Request parameters
             "q": query,
             "count": "30",
-            "offset": "0",
+            "offset": offset,
             "mkt": "pt-br",
             "safeSearch": "Moderate",
         };
@@ -34,3 +26,9 @@ function pesquisa(){
             alert("Erro ao acessar api do Bing. Por favor, tente novamente em alguns minutos.");
         });
     }
+function enviar(array)
+{
+    $("#tabela_imagens").load("http://localhost/photoarts/server.php",{value: array},function(resp,status,jqxhr){
+        alert("Informacoes Armazenadas no BD");
+    });
+}

@@ -1,5 +1,47 @@
 .imagens_show{
-width: 15%;
-height: auto;
-margin: 3px;
+	width: 15%;
+	height: auto;
+	border: 5px solid white;
+}
+
+.imagens_show:hover, .sel_imagens{
+	width: 15%;
+	height: auto;
+	border: 10px solid yellow;
+}
+
+#botao_mais, #botao_salvar{
+	margin-left: 47%;
+	border: 3px solid black;
+}
+
+#gif{
+	margin-left: 45%;
+	width: 15%;
+	height: auto;
+	position: absolute;
+}
+
+.comentario{
+	width: 40%;
+	height: 12%;
+}
+
+li{
+	border: 15px solid white;
+}
+
+#ul_com_imgs{
+	display: block;
+	width: 80%;
+	height: auto;
+}
+
+.com_img{
+	width: 50%;
+	height: auto;
+}
+
+.relat, th, td {
+    border: 1px solid black;
 }

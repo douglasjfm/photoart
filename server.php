@@ -1,41 +1,22 @@
 <?php
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
-require_once 'HTTP/Request2.php';
-
-$request = new Http_Request2('https://bingapis.azure-api.net/api/v5/images/search');
-$url = $request->getUrl();
-
-$headers = array(
-    // Request headers
-    'Ocp-Apim-Subscription-Key' => '27fad80fd63b40fca252fd2efab02582',
-);
-
-$request->setHeader($headers);
-
-$parameters = array(
-    // Request parameters
-    'q' => $_GET['q'],
-    'count' => '10',
-    'offset' => '0',
-    'mkt' => 'pt-br',
-    'safeSearch' => 'Moderate',
-);
-
-$url->setQueryVariables($parameters);
-
-$request->setMethod(HTTP_Request2::METHOD_GET);
-
-// Request body
-$request->setBody("{body}");
-
-try
-{
-    $response = $request->send();
-    echo $response->getBody();
-}
-catch (HttpException $ex)
-{
-    echo $ex;
+$conn = new mysqli('localhost', 'root', '','photoarts');
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+$fotos = $_POST['value'];
+
+$i = 0;
+$table = '<table class="relat"><th>Link<th>Nome</th><th>Comentario</th>';
+foreach ($fotos as $f) {
+    $link = $f["link"];
+    $nome = $f["nome"];
+    $com = $f["comentario"];
+    $conn->query("INSERT INTO `photos` (link,nome,comentario) VALUES ('$link','$nome','$com')");
+
+    $table .= "<tr>"."<td>".$link."</td>"."<td>".$nome."</td>"."<td>".$com."</td>"."</tr>";
+}
+$table .= "</table>";
+echo $table;
 ?>
